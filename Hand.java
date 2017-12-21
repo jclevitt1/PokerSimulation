@@ -1,8 +1,8 @@
 /**
  * Hand
- * 
+ *
  * Framework of a hand object which represents a player's hand in a given round of poker.
- * 
+ *
  * Author: Jeremy Levitt
  */
 public class Hand
@@ -19,11 +19,11 @@ public class Hand
 
     /*
      * Hand Constructor:
-     * 
+     *
      * Initializes the class's variables.
-     * 
+     *
      * @param String n: the name of the player's hand.
-     * 
+     *
      */
     public Hand(String n){
         inGame=true;
@@ -31,15 +31,15 @@ public class Hand
         name=n;
         money = 10000;
     }
-    
+
     /*
      * value (int cardVal)
-     * 
+     *
      * Converts a number into the value of the card that the number represents.  This does NOT include suits (Spades, Hearts, Clubs, and Diamonds).
      * This method is used when describing a hand.  For instance, if a hand has a pair of Aces, this method would be used to return "Ace".
-     * 
+     *
      * @param cardVal: The number of the card desired to be converted.
-     * 
+     *
      */
     public String value(int cardVal){
         String value = "";
@@ -64,12 +64,12 @@ public class Hand
 
     /*
      * conversion (int card)
-     * 
+     *
      * Converts an integer in a hand to the String/text equivalent.  For instance, 0 would become "2S".
-     * 
+     *
      * @ param int card: the integer-version of the card desired to convert.
      * @ return String: card equivalent of the integer value in the argument.
-     * 
+     *
      */
     public String conversion(int card){
         String suit;
@@ -108,10 +108,10 @@ public class Hand
 
     /*
      * typeOfHand()
-     * 
+     *
      * Returns the type of hand a player has and what value they have with it.  For instance, if a player has a pair of 2's, this method would return
      * "Pair: 2".
-     * 
+     *
      * @param none
      * @return String that tells what type of hand a player has
      */
@@ -160,9 +160,9 @@ public class Hand
 
     /*
      * cards()
-     * 
+     *
      * Converts the array of integers stored in hand to actual cards, and returns as a String array of the player's hand.
-     * 
+     *
      * @param none
      * @return String Array of the user's cards in hand
      */
@@ -173,23 +173,25 @@ public class Hand
         }
         return universal;
     }
-    
+
     /*
      * getHighCard()
-     * 
+     *
      * Returns the highest value card in the player's hand.  Used in typeOfHand().
-     * 
+     *
      * @param none
      * @return int representative of the highest value card in the player's hand.
-     * 
+     *
      */
     public int getHighCard(){
         int high = hand[0]%13;
+        int card = hand[0]
         for (int i=1; i<hand.length; i++){
             if (hand[i]%13 > high){
                 high = hand[i]%13;
+                card = hand[i]
             }
         }
-        return high;
+        return conversion(card);
     }
 }
